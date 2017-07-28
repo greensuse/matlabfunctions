@@ -1,6 +1,6 @@
 function [ data ] = GetHistoricFred(symbol,startDate,endDate)
 %   Foked by Julio Lima (Universidade Federal do Ceará)
-%   Query date ranges from google finance.
+%   Query date ranges from Fre finance.
 %   Sample usage: GetHistoricFred(M1','04/27/2010','04/27/2017')
 
     %Define a format of query.
@@ -34,5 +34,7 @@ function [ data ] = GetHistoricFred(symbol,startDate,endDate)
     url = strrep(url,' ','%20');
     response = urlread(url);
     data = textscan(response,'%s %f %f %f %f %f','delimiter',',','HeaderLines',1);
+    
+    lala
     
 end
