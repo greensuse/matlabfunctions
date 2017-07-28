@@ -39,6 +39,6 @@ function [ data ] = GetHistoricFred(symbol,startDate,endDate)
     response = urlread(char(url));
     
     %Scan and convert the file to cells and return.
-    data = textscan(response,'%s %f %f %f %f %f','delimiter',',','HeaderLines',1);  
+    data = textscan(response,'%s %f','delimiter',',','HeaderLines',1);  
     
 end
