@@ -26,7 +26,7 @@ function [ data ] = GetHistoricFred(symbol,startDate,endDate)
     attributes(3) = cellstr(strcat('&coed=',endDateStr));
 
     %Define root of query.
-    root = 'https://fred.stlouisfed.org/graph/fredgraph.csv?chart_type='; %root the url address to download in csv format
+    root = strcat('https://fred.stlouisfed.org/graph/fredgraph.csv?chart_type='); %root the url address to download in csv format
     
     %Interact root with attributes.
     for i_cat = 1:n_attb
@@ -35,12 +35,10 @@ function [ data ] = GetHistoricFred(symbol,startDate,endDate)
     
     url = root;
     
-    disp(url);
-        
-    url = strrep(url,' ','%20');
-    response = urlread(url);
-    data = textscan(response,'%s %f %f %f %f %f','delimiter',',','HeaderLines',1);
+    %Receive the file;
+    response = urlread(char(url));
     
-    
+    %Scan and convert the file to cells and return.
+    data = textscan(response,'%s %f %f %f %f %f','delimiter',',','HeaderLines',1);  
     
 end
